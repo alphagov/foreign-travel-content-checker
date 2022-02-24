@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Foreign Travel Content Checker</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple-v1.css">
+    <style>
+      body { max-width: 100rem; }
+      .newspaper {
+        max-width: 85rem;
+        margin: auto;
+        column-count: 2;
+        column-gap: 40px;
+      }
+      .newspaper > h3 {
+        border-top: solid 1px grey;
+        border-bottom: solid 1px grey;
+        padding: 1em 0;
+      }
+      .entry-requirements {
+        max-width: 85rem;
+        margin: auto;
+        padding-top: 2em;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

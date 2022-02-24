@@ -1,0 +1,12 @@
+<header>
+  <h1><%= @location.name %></h1>
+</header>
+
+<main>
+  <div class="newspaper">
+    <% @content.each do |header, value| %>
+      <h3><%= header %></h3>
+      <%= value.html_safe %>
+    <% end %>
+  </div>
+</main>

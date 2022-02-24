@@ -1,0 +1,99 @@
+<style>
+  header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    height: 150px;
+  }
+
+  thead {
+    position: sticky;
+    top: 149px;
+    left: 0;
+  }
+</style>
+
+<header>
+  <h1>Locations [<%= @locations.count %>]</h1>
+  <p><%= link_to "Update", update_path %> | <%= link_to "Completed", completed_path %></p>
+</header>
+
+<main>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Name / Slug<br>
+          <span style="font-size: 0.8em">
+            [Complete: <%= @completed_stats["all"] %>]
+          </span>
+        </th>
+        <th>
+          All travellers<br>
+          <span style="font-size: 0.8em">
+            [Complete: <%= @completed_stats["all_travellers"] %>]
+          </span>
+        </th>
+        <th>
+          Transiting through<br>
+          <span style="font-size: 0.8em">
+            [Complete: <%= @completed_stats["transiting"] %>]
+          </span>
+        </th>
+        <th>
+          Not fully vaccinated<br>
+          <span style="font-size: 0.8em">
+            [Complete: <%= @completed_stats["not_fully_vaccinated"] %>]
+          </span>
+        </th>
+        <th>
+          Fully vaccinated<br>
+          <span style="font-size: 0.8em">
+            [Complete: <%= @completed_stats["fully_vaccinated"] %>]
+          </span>
+        </th>
+        <th>
+          Children and young people<br>
+          <span style="font-size: 0.8em">
+            [Complete: <%= @completed_stats["children_young"] %>]
+          </span>
+        </th>
+        <th>
+          Exemptions<br>
+          <span style="font-size: 0.8em">
+            [Complete: <%= @completed_stats["exemptions"] %>]
+          </span>
+        </th>
+        <th>Last updated<br>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @locations.each do |location| %>
+        <tr>
+          <td>
+            <% if location.complete? %>
+              <%= link_to location.name, location_path(location.slug) %>
+            <% else %>
+              <%= location.name %>
+            <% end %>
+            <br>
+            <span style="font-size: 0.8em">
+              <%= location.slug %>
+            </span>
+          </td>
+          <td><%= render "header_status", header_status: location.all_travellers %></td>
+          <td><%= render "header_status", header_status: location.transiting %></td>
+          <td><%= render "header_status", header_status: location.not_fully_vaccinated %></td>
+          <td><%= render "header_status", header_status: location.fully_vaccinated %></td>
+          <td><%= render "header_status", header_status: location.children_young %></td>
+          <td><%= render "header_status", header_status: location.exemptions %></td>
+          <td>
+            <span style="font-size: 0.8em">
+              <%= location.updated_at %>
+            </span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</main>
