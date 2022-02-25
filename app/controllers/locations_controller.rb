@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rake'
+require "rake"
 
 Rake::Task.clear
 ForeignTravelContentChecker::Application.load_tasks
@@ -19,9 +19,9 @@ class LocationsController < ApplicationController
   end
 
   def update
-    Rake::Task['db:update'].reenable
-    Rake::Task['db:update'].invoke
-    redirect_to action: 'index'
+    Rake::Task["db:update"].reenable
+    Rake::Task["db:update"].invoke
+    redirect_to action: "index"
   end
 
   def completed
@@ -30,10 +30,10 @@ class LocationsController < ApplicationController
     end
   end
 
-  private
+private
 
   def error_if_passed_deadline
-    return unless Time.zone.today > Date.parse('01/06/2022')
+    return unless Time.zone.today > Date.parse("01/06/2022")
 
     raise StandardError.new("This app exceeds it's deadline date"), status: 500
   end
