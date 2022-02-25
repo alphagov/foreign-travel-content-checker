@@ -1,0 +1,29 @@
+{
+  "name": "foreign-travel-content-checker",
+  "repository": "https://github.com/alphagov/foreign-travel-content-checker",
+  "env": {
+    "RAILS_SERVE_STATIC_ASSETS": {
+      "value": "yes"
+    },
+    "SECRET_KEY_BASE": {
+      "generator": "secret"
+    },
+    "HEROKU_APP_NAME": {
+      "required": true
+    }
+  },
+  "image": "heroku/ruby",
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-ruby"
+    }
+  ],
+  "addons": [
+    {
+      "plan": "heroku-postgresql:hobby-dev"
+    },
+    {
+      "plan": "scheduler:standard"
+    }
+  ]
+}
