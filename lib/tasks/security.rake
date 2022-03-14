@@ -2,5 +2,5 @@
 
 desc "Run Brakeman"
 task security: [:environment] do
-  sh "bundle exec brakeman"
+  sh "bundle exec brakeman . --no-summary --quiet"
 end
