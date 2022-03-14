@@ -3,13 +3,13 @@
 class Location < ApplicationRecord
   def self.completed_stats
     {
-      'all' => completed_slugs.count,
-      'all_travellers' => where('all_travellers = true').count,
-      'transiting' => where('transiting = true').count,
-      'not_fully_vaccinated' => where('not_fully_vaccinated = true').count,
-      'fully_vaccinated' => where('fully_vaccinated = true').count,
-      'children_young' => where('children_young = true').count,
-      'exemptions' => where('exemptions = true').count
+      "all" => completed_slugs.count,
+      "all_travellers" => where("all_travellers = true").count,
+      "transiting" => where("transiting = true").count,
+      "not_fully_vaccinated" => where("not_fully_vaccinated = true").count,
+      "fully_vaccinated" => where("fully_vaccinated = true").count,
+      "children_young" => where("children_young = true").count,
+      "exemptions" => where("exemptions = true").count,
     }
   end
 
@@ -20,7 +20,7 @@ class Location < ApplicationRecord
       not_fully_vaccinated: true,
       fully_vaccinated: true,
       children_young: true,
-      exemptions: true
+      exemptions: true,
     ).map(&:slug).sort
   end
 

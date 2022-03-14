@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require 'simplecov'
-SimpleCov.start 'rails' do
-  add_filter 'lib/tasks/lint.rake'
-  add_filter 'lib/tasks/security.rake'
+require "simplecov"
+SimpleCov.start "rails" do
+  add_filter "lib/tasks/lint.rake"
+  add_filter "lib/tasks/security.rake"
 end
 
-ENV['RAILS_ENV'] ||= 'test'
-require_relative '../config/environment'
-require 'rails/test_help'
-require 'webmock/minitest'
-require 'helpers/foreign_travel_advice_api_helper'
+ENV["RAILS_ENV"] ||= "test"
+require_relative "../config/environment"
+require "rails/test_help"
+require "webmock/minitest"
+require "helpers/foreign_travel_advice_api_helper"
 
 module ActiveSupport
   class TestCase

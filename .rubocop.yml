@@ -1,37 +1,18 @@
-Style/Documentation:
-  Exclude:
-    - 'app/controllers/**/*'
-    - 'app/helpers/**/*'
-    - 'app/models/**/*'
-    - 'config/**/*'
+inherit_gem:
+  rubocop-govuk:
+    - "config/default.yml"
+    - "config/rails.yml"
 
-Metrics:
-  Enabled: false
+inherit_mode:
+  merge:
+    - Exclude
 
-AllCops:
-  NewCops: enable
-  SuggestExtensions: false
-
-  Include:
-    - 'config.ru'
-    - 'Gemfile'
-    - 'Guardfile'
-    - 'Rakefile'
-    - 'app/**/*.rb'
-    - 'config/**/*.rb'
-    - 'lib/**/*.rb'
-    - 'spec/**/*.rb'
-    - 'db/seeds.rb'
-
-  Exclude:
-    - 'bin/*'
-    - 'db/schema.rb'
-    - 'db/migrate/*'
-    - 'log/**/*'
-    - 'node_modules/**/*'
-    - 'public/**/*'
-    - 'script/**/*'
-    - 'vendor/**/*'
-    - 'tmp/**/*'
-    - '.git/**/*'
-    - 'app/views/**/*'
+# **************************************************************
+# TRY NOT TO ADD OVERRIDES IN THIS FILE
+#
+# This repo is configured to follow the RuboCop GOV.UK styleguide.
+# Any rules you override here will cause this repo to diverge from
+# the way we write code in all other GOV.UK repos.
+#
+# See https://github.com/alphagov/rubocop-govuk/blob/main/CONTRIBUTING.md
+# **************************************************************
