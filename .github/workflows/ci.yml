@@ -8,14 +8,16 @@ jobs:
         ports:
           - 5432:5432
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: foreign_travel_content_checker_test
+          POSTGRES_HOST_AUTH_METHOD: trust
         options:
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+
+    env:
+      RAILS_ENV: test
+      TEST_DATABASE_URL: postgresql://postgres@localhost/foreign_travel_content_checker_test
 
     steps:
       - name: Checkout code
@@ -27,11 +29,6 @@ jobs:
           bundler-cache: true
 
       - name: Setup the database
-        env:
-          RAILS_ENV: test
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: foreign_travel_content_checker_test
         run: |
           bundle exec rails db:reset
 
